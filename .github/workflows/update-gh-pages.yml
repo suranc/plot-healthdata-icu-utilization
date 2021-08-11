@@ -35,6 +35,8 @@ jobs:
       run: python plot.py
     - name: Publish gh-pages
       run: |
+        git config --global user.email "suran.c@gmail.com"
+        git config --global user.name "Chris Suran"
         git add index.html
         git commit -m "Update ICU data chart"
         git push
