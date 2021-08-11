@@ -32,7 +32,7 @@ jobs:
         cp plot-icu-data.py plot.py
         git checkout gh-pages
     - name: Generate index.html with plotted ICU data
-      run: ./plot
+      run: ./plot.py
     - name: Publish gh-pages
       run: |
         git add index.html
