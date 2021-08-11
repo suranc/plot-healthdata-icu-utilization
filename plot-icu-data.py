@@ -35,5 +35,5 @@ df_date = df.loc[(df['date'] > pd.to_datetime('2020/07/14'))]
 # Create line chart of data, grouped by state
 fig = px.line(df_date, x = 'date', y = 'adult_icu_bed_utilization', color='state', line_group='state', title='Adult ICU Bed Utilization')
 
-# Generate icu_util.html interactive chart of the data, minus the above filters
-fig.write_html('icu_util.html')
+# Generate index.html interactive chart of the data, minus the above filters
+fig.write_html('index.html')
