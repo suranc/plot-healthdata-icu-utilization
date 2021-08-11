@@ -1,8 +1,20 @@
 #!/usr/bin/python3
 import pandas as pd
 import plotly.express as px
+import requests, json
+import io
 
-df = pd.read_csv('covid.csv')
+# Fetch JSON of dataset, and extract the latest CSV URL archive to download
+url = requests.get("https://healthdata.gov/resource/qqte-vkut.json")
+body = url.text
+data = json.loads(body)
+csv_url = data[len(data) - 1]['archive_link']['url']
+
+# Download CSV and pass it to pandas to turn into a DataFrame
+csv_url = requests.get(csv_url)
+csv_string = csv_url.text
+csv_buffer = io.StringIO(csv_string) # Turn csv_string into a file buffer to pass to read_csv
+df = pd.read_csv(csv_buffer)
 
 # Sort DataFrame by date
 df.sort_values(by=['date'], inplace=True)
