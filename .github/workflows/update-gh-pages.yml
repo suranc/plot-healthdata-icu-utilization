@@ -5,8 +5,8 @@ name: Update ICU Plot in GitHub Pages
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    # Run every Sunday
-    - cron:  '* 1 * * 0'
+    # Run every Monday
+    - cron:  '* 1 * * 1'
 
 jobs:
   generate-gh-pages:
